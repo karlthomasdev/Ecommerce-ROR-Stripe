@@ -1,0 +1,24 @@
+<div class="wrapper small-12 columns row">	
+	<div class="row">
+	  <div class="small-12 small-centered columns">
+	  	<h3 class="dashboard-heading">Instructor Dashboard</h3>
+	  </div>
+	</div>
+
+	<% @orders.each_with_index do |order, index| %>
+		<div class="panel">
+			<div class="row">
+			  <div class="large-12 columns">
+					<%= render partial: "layouts/contact", object: order.customer %>		
+				</div>
+			</div>
+			<div class="row">
+			  <div class="large-12 columns">
+					<%= render partial: "layouts/schedule", object: order %>		  	
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<%#= render partial: "layouts/schedule", collection: @customers %>

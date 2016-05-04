@@ -1,0 +1,12 @@
+Welcome to Match Point!
+
+Account Info 
+username: <%= @user.email %>.
+ 
+To validate your email address, please click the following link:
+http://localhost:3000/activate/<%= @user.code %>
+
+Your validation code expires at <%= @user.expires_at %>
+
+-Steve Nash
+Customer Support

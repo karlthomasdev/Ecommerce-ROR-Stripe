@@ -1,0 +1,27 @@
+<h3>Your email address has been validated!</h3>
+<h1>Personal Info</h1>
+<%= form_for @user, url: users_path, html:{ autocomplete: :off } do |form| %>
+	<div class="content" data-section-content>
+    <div class="row">
+    	<div class="small-8 columns">
+				<%= form.label :first_name, class: "small-6 columns" %>
+				<%= form.text_field :name_first, class: "small-6 columns" %>
+			</div>
+		</div>
+		<div class="row">
+    	<div class="small-8 columns">
+				<%= form.label :last_name, class: "small-6 columns" %>
+				<%= form.text_field :name_last, class: "small-6 columns" %>
+			</div>
+		</div>
+		<div class="row">
+    	<div class="small-8 columns">
+				<%= form.label :phone, class: "small-6 columns" %>
+				<%= form.text_field :phone, class: "small-6 columns" %>
+			</div>
+		</div>
+		<!--send the code as a hidden field so we know who's account to update-->
+		<%= form.hidden_field :code %>
+		<div><%= form.submit "Submit", :class => "small button" %></div>
+	</div><!--.content-->
+<% end %>

@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require foundation_and_overrides
+ */
+* {
+	padding: 0;
+	margin: 0;
+}
+
+ body {
+ 	width: 100%;
+}
+#wrapper {
+	width: 100%;
+	max-width: 960px;
+	margin: auto;
+}
+
+/*BEGIN HEADER*/
+#logo {
+	width: 40%;
+	float: left;
+	padding: 0;
+	margin-left: 2%;
+}
+#logo h1 {
+	font-size: 40px;
+	color: #F7F033;
+}
+#user_nav {
+	width: 58%;
+	float: left;
+}
+#user_nav ul {
+	margin-left: 52%;
+	list-style-type: none;
+}
+#user_nav ul li {
+	float: left;
+	background-color: #F9F93E;
+	margin: 0 3%;
+	padding: 2% 3%;
+}
+#user_nav ul li a {
+	color: black;
+}
+#user_nav ul li a:hover {
+	color: #fff;
+}
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.wrapper {
+	width: 1050px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F9F93E;
+	border: 1px solid black;
+}

@@ -1,0 +1,46 @@
+label {
+	display: inline;
+}
+
+.hidden-package {
+	display: none;
+}
+
+fieldset legend {
+	background-color: #f2f2f2;
+	font-size: 20px;
+}
+
+.selectbox {
+  width: 125px;
+  height: 30px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.creditcardselect {
+	width: 60px;
+ 	height: 25px;
+ 	overflow: hidden;
+ 	border: 1px solid #ccc;
+}
+
+input.name-field {
+	width: 200px;
+}
+
+input.phone {
+	width: 100px;
+}
+
+input.number {
+	width: 130px;
+}
+
+input.cvc {
+	width: 40px;
+}
+
+.section {
+	padding-bottom: 20px;
+}

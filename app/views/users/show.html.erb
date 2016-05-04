@@ -1,0 +1,31 @@
+<div class="wrapper small-12 columns row">	
+	<div class="row">
+	  <div class="small-12 small-centered columns">
+	  	<h3 class="dashboard-heading"><%= "#{@customer.name_first}'s Dashboard" unless @customer.name_first.nil? %></h3>
+	  	<a href=<%= purchase_path %> id="purchase-button-top" class="small button">Purchase Lessons</a>
+	  </div>
+	</div>
+
+	<% @customer.orders.each_with_index do |order, index| %>
+		<div class="panel">
+			<div class="row">
+			  <div class="large-12 columns">
+			  	<%= render partial: "layouts/contact", object: order.instructor %>
+				</div>
+				<div class="large-12 columns">
+					<%= render partial: "layouts/schedule", object: order %>
+			  </div>
+			</div><!--end .row-->
+		</div>
+	<% end %>
+		
+	<div class="row">
+		<div class="large-12 columns">
+			<a href=<%= purchase_path %> id="purchase-button" class="small button">Purchase Lessons</a>
+		</div>
+	</div>
+</div>
+
+
+
+

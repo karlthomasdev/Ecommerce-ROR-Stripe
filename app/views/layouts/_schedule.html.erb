@@ -1,0 +1,46 @@
+<table class="lessons-table">
+  <thead>
+    <tr>
+      <th class="lesson-column centered">&nbsp;</th>
+      <th class="status-column centered">Status</th>
+      <% if (current_user.is_a? Instructor) %>
+        <th class="date-column centered" id="date-column">Date Used</th>
+        <th>&nbsp;</th>
+      <% else %>
+        <th class="customer-date-column centered" id="customer-date-column">Date Used</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% def add_style(item)
+     if (item.status ==  "Used")
+        return  "alert"
+      else 
+        return "success"
+      end
+    end %>      
+    <% schedule.lessons.each_with_index do |lesson, index| %> 
+      <tr>
+        <td class="centered"><%= index + 1 %></td>
+        <td class="centered"><span class="<%=add_style(lesson)%> label" id="label-<%= lesson.id %>" data-id=<%= lesson.id %> data-status=<%= lesson.status %>><%= lesson.status %></span></td>
+        <% if (current_user.is_a? Instructor) %>
+          <% if lesson.status == 'Available' %>
+            <td class="centered" id="tablecell-<%= lesson.id %>"><input type="text" id="date-<%= lesson.id %>" class="datepicker" data-id=<%= lesson.id %>></td>
+            <td class="centered">
+              <a href="#" class="tiny button toggle" data-id=<%= lesson.id %> data-order-id=<%= schedule.id %>>Submit</a>
+            </td>
+          <% else %>
+            <% unless lesson.dateused.nil? %>
+              <td class="centered" id="tablecell-<%= lesson.id %>"><span><%= lesson.dateused.strftime("%d-%m-%y") %></span></td>
+            <% end %>
+            <td class="button-column centered"><a href="#" class="tiny button toggle" data-id=<%= lesson.id %> data-order-id=<%= schedule.id %>>Edit</a></td>
+          <% end %>
+        <% else %>
+          <% if lesson.status == 'Used' && !lesson.dateused.nil? %>
+            <td class="centered"><span><%= lesson.dateused.strftime("%d-%m-%y") %></span></td>  
+          <% end %>       
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,98 @@
+#login-outer {
+	width: 100%;
+}
+
+.vcard {
+	display: block;
+	margin: 0 0 0 2%;
+	padding: 0;
+}
+#login-hints.hints {
+	width: 23.916667%;
+	float: left;
+	margin-top: 5%;
+	margin-left: 18%;
+}
+
+#login-container.login-wrapper {
+	width: 52.083333%;
+	float: left;
+	margin-top: 50px;
+	margin-left: 2%;
+	padding-left: 2%;
+	background-color: #F9F93E;
+	border: 1px solid black;
+}
+.login-credentials {
+
+}
+.login-label {
+	width: 15%;
+	float: left;
+}
+.login-input {
+	width: 75%;
+	float: left;
+	margin: 0 5%;
+}
+.login.btn {
+	width: 25%;
+	margin-left: 70%;
+	background-color: #2DE20D;
+	padding: 2% 6%;
+	font-size: 1em;
+}
+
+/*Media Queries*/
+@media screen and (max-width: 880px) {
+	#login-container.login-wrapper {
+		float: none;
+	}
+	#login-hints.hints {
+		width: 50%;
+		float: none;
+		margin-top: 5%;
+		margin-left: 2%;
+	}
+	.login.button {
+		font-size: 0.75em;
+	}
+}
+@media screen and (max-width: 580px) {
+	#logo {
+		float: none;
+		width: 88%;
+	}
+	#user_nav {
+		float: left;
+		width: 100%;
+		margin-left: 0%;
+	}
+	#user_nav ul {
+		margin-left: 0%;
+	}
+	#user_nav ul li {
+		float: none;
+		display: inline;
+	}
+	#login-container.login-wrapper {
+		width: 89%;
+		margin-left: 3%;
+		margin-right: 5%;
+	}
+	#login-hints.hints {
+		width: 100%;
+		float: none;
+		margin-top: 5%;
+		margin-left: 3%;
+	}
+	.login.button {
+		font-size: 0.75em;
+	}
+	.lessons-table .tiny.button.toggle {
+		padding: 4% 5%;
+		width: 59px;
+		background-color: white;
+		color: black;
+	}
+}

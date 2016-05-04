@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Uncomment to make IE8 render like IE7 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Match Point</title>
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header class="clearfix">
+        <div id="logo">
+          <h1>Match Point</h1>
+        </div>
+        <!-- <nav id="main-nav" class="clearfix">
+          <ul>
+            <li><a href="#">DASHBOARD</a></li>
+            <li><a href="#">PURCHASE</a></li>          
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </nav> -->
+        <div id="user_nav">   
+          <nav> 
+            <ul>  
+              <% if name_first %>
+                <li>Hi, <%= current_user.name_first %></li>
+                <li><%= link_to "Log out", logout_path %></li>
+              <% elsif current_user %>
+                <li>Logged in as <%= current_user.email %></li>
+                <li><%= link_to "Log out", logout_path %></li>
+              <% else %>
+                <li><%= link_to "Log in", login_path %></li>
+                <li><%= link_to "Sign up", signup_path %></li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
+    </div><!--.#wrapper-->
+  </body>
+</html>
+
+
+
+

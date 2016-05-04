@@ -1,0 +1,119 @@
+<% provide(:title, "Purchase") %>
+<div class="wrapper small-12 columns">  
+  <div class="row">
+    <div class="small-12 small-centered columns">
+      <h3 class="dashboard-heading">Purchase Lessons</h3>
+    </div>
+  </div>
+  <%= form_for @purchase, html: {autocomplete: :off} do |form| %>
+    <div class="row section">
+  		<div class="small-12 columns">
+    		<fieldset>     	
+          <legend>Package</legend>
+    			<% @packages.each do |package| %>
+      			<div>
+      				<%= form.radio_button(:package, package.id) %>
+      				<%= form.label("package_" + package.id.to_s, 
+      											package.quantity.to_s + " Lesson $" + 
+      											(package.price/100.0).to_s, 
+      											data: { quantity: package.quantity.to_s }) %>
+      			</div>
+      		<% end %>
+        </fieldset>
+    	</div>	      	
+  	</div><!--.row-->
+    <div class="row section">
+    	 <div class="small-12 columns">
+  		  <fieldset>
+          <legend>Instructor</legend>
+          <select class="selectbox" name="purchase[instructor]">
+           <%= @instructors.each do |instructor| %>
+             <option value=<%= instructor.id %>><%= instructor.name_last %></option>
+           <% end %>
+          </select>
+        </fieldset>
+    	</div>
+    </div><!--.row-->
+    <div class="row section">
+    	<div class="large-12 columns">
+    		<%= form.label :first_name %>
+    		<%= form.text_field :name_first, value:current_user.name_first, class:"name-field" %>
+    	</div>
+    </div>
+    <div class="row section">
+    	<div class="small-12 columns">
+    		<%= form.label :last_name %>
+    		<%= form.text_field :name_last, value:current_user.name_last, class:"name-field" %>
+    	</div>
+    </div>
+   	<div class="row section">
+    	<div class="small-12 columns">
+    		<%= form.label :phone %>
+    		<%= form.text_field :phone, value:current_user.phone, class:"phone" %>
+    	</div>
+    </div>
+    <div class="row section">
+    	<div class="small-12 columns">
+    		<div class="payment-errors"></div>
+    		<label>
+    			<span>Card Number</span>
+    			<input type="text" size="20" class="number" data-stripe="number"/>
+    		</label>
+    	</div>
+    </div>
+  	<div class="row section">
+  	  <div class="small-12 columns">
+  	    <label>
+  	      <span>CVC</span>
+  	      <input type="text" size="4" class="cvc" data-stripe="cvc"/>
+  	  	</label>
+  	  </div>
+  	</div>
+    <div class="row section">
+      <div class="small-12 columns">
+        <label>
+          <span>Expiration Date</span>
+      </div>
+    </div>
+    <div class="row section">
+    	<div class="small-12 columns">
+          <select class="creditcardselect" data-stripe="exp-month">
+            <%= @months.each do |month| %>
+              <option value=<%= month %>><%= month %></option>
+            <% end %>
+          </select>
+          <!--<input type="select" size="2" data-stripe="exp-month"/>-->
+        </label>
+        
+        <select class="creditcardselect" data-stripe="exp-year">
+          <%= @years.each do |year| %>
+            <option value=<%= year %>><%= year %></option>
+          <% end %>
+        </select>
+        <!--<input type="select" size="4" data-stripe="exp-year"/>-->
+      </div>
+    </div>
+   <!-- </div> -->
+    <!--show the order summary-->
+    <div id="summary_name_first"></div>
+    <div id="summary_name_last"></div>
+    <div id="summary_phone"></div>
+    <div id="summary_payment_method"></div>
+    <div>
+      <% @packages.each do |package| %>
+  	    <div id = "<%= package.id.to_s %>selected" class="hidden-package"> <%= package.quantity %> Lessons for $<%= (package.price/100.0).to_s %> 
+  	    </div>
+  	  <% end %>
+  	</div>
+  	<div class="row">
+  		<div class="small-12 columns">
+  			<%= form.submit "Purchase", class: "button" %>
+  		</div>
+  	</div>	  
+  <% end %>
+</div>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script>
+  // This identifies your website in the createToken call
+  Stripe.setPublishableKey('pk_test_GE3dSmLHzDugfJTxr29lkUeg');
+</script>
